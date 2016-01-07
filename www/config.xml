@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- NO PONER TILDES EN LOS COMENTARIOS O SE VA A CORROMPER -->
 
 <!-- Permiso para que pueda ir a un sitio X (para poder ocupar la API de Maps) -->
 <access origin="*" />
 
-<!-- Plugin geolocalización -->
+<!-- Plugin geolocalizacion -->
 <gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" /> 
 
 <!-- Plugin lector de codigo QR -->
