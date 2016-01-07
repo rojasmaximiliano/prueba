@@ -47,3 +47,18 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+
+function scanear(){ 
+	alert("vamos a intentar");
+	cordova.plugins.barcodeScanner.scan( 
+		function (result) {  
+			console.log(result.text);
+			alert(result.text); 
+		}, 
+		function (error) { 
+			alert("nope");
+			notificacion("Ha ocurrido un error al escanear."); 
+		} 
+	); 
+}; 

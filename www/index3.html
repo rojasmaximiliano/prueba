@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html> 
+    <head> 
+        <meta charset="utf-8" /> 
+        <meta name="format-detection" content="telephone=no" /> 
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" /> 
+        <link rel="stylesheet" type="text/css" href="css/index.css" /> 
+        <title>Google Maps y PhoneGap</title> 
+    </head>
+    <body>
+        <div id="map-canvas"></div> 
+        <script type="text/javascript" src="phonegap.js"></script> 
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> 
+        <script> 
+            var map; 
+            var myLatlng; 
+            function initialize(lat,long) { 
+                myLatlng = new google.maps.LatLng(lat, long); 
+                var mapOptions = { 
+                    zoom: 14, 
+                    center: myLatlng 
+                }; 
+                 
+                map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions); 
+                 
+                var marker = new google.maps.Marker({ 
+                    position: myLatlng, 
+                    map: map, 
+                    title: 'Mi punto en el mapa' 
+                }); 
+                 
+            } 
+             
+            function onDeviceReady() { 
+                navigator.geolocation.getCurrentPosition(onSuccess, onError); 
+            } 
+             
+            function onSuccess(position) { 
+                initialize(position.coords.latitude,position.coords.longitude); 
+            } 
+                       
+            function onError(error) { 
+                alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n'); 
+            }
+			
+		    document.addEventListener('deviceready', onDeviceReady, false); 
+        </script>
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+    </body>
+</html>

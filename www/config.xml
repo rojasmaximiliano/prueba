@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Permiso para que pueda ir a un sitio X (para poder ocupar la API de Maps) -->
+<access origin="*" />
+
+<!-- Plugin geolocalización -->
+<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" /> 
+
+<!-- Plugin lector de codigo QR -->
+<gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" /> 
+
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
