@@ -11,10 +11,10 @@
 	<access origin="*" />
 
 	<!-- Plugin geolocalizacion -->
-	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" /> 
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.12" /> 
 
 	<!-- Plugin lector de codigo QR -->
-	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" /> 
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.2.0" /> 
 	
     <name>Hello World</name>
 

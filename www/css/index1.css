@@ -35,39 +35,7 @@ body {
 }
 
 /* Portrait layout (default) */
-.index {
-	background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:20%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
-}
 
-#cargando {
-	text-align: center;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
 
 .app {
     text-align:center;
@@ -76,11 +44,25 @@ body {
                                    /* offset horizontal: half of text area width */
 }
 
+textarea {
+	resize: none;
+}
+
 #map-canvas{ 
-	width:100%; 
-    height:400px; 
-    } 
-	
+	width:80%; 
+	margin-top:10%;
+	margin-left:10%;
+    height:400px 
+            } 
+			
+#login{
+	text-align: center;
+    position: absolute;
+    margin: auto;
+	margin-top: 50%;
+}
+			
+			
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .index {
@@ -146,3 +128,4 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+

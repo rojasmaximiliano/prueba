@@ -8,7 +8,23 @@
         <title>Google Maps y PhoneGap</title> 
     </head>
     <body>
-        <div id="map-canvas"></div> 
+	
+	<div class="pure-g">
+		<div class="pure-u-1-3"> </div>
+		
+		<div class="pure-u-1-3" id="cargando">
+			<br> <br> <br>
+			<p> Cargando puntos limpios </p>
+			<img src="img/cargando.gif">
+		</div>
+		
+		<div class="pure-u-1-3"> </div>
+	
+		
+        <div id="map-canvas">
+		
+		</div> 
+	</div>	
         <script type="text/javascript" src="phonegap.js"></script> 
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> 
         <script> 
@@ -28,7 +44,9 @@
                     map: map, 
                     title: 'Mi punto en el mapa' 
                 }); 
-                 
+                
+				var parentElement = document.getElementById("cargando");
+				parentElement.setAttribute('style', 'display:none;');
             } 
              
             function onDeviceReady() { 

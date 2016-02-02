@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="css/index2.css" />
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">		
+        <title>Demo Menu</title>
+    </head>
+    <body>
+		<div id="menuprincipal">
+			<div id="wrapperMenu">
+				<div class="scroller">
+					<div id="contenidoMenu"></div>
+				</div>
+			</div>
+		</div>
+    	<div id="cuerpo">
+	        <div id="header">
+				<a href="javascript:menu('menu');"><div class="btn"><img class="logo" src="img/menu.svg" /> </div></a> 
+				<img class="logo" src="img/logo2.png" /> 
+				
+			</div>
+			
+			<div id="wrapper">
+				<div class="scroller">
+					<div id="contenidoCuerpo"></div>
+				</div>
+			</div>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript" src="js/index2.js"></script>
+		<script type="text/javascript" src="phonegap.js"></script> 
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> 
+        <script type="text/javascript">
+            app.initialize();
+			document.addEventListener('deviceready', onDeviceReady, false); 
+        </script>
+    </body>
+</html>
