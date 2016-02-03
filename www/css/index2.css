@@ -29,7 +29,19 @@ a {
 
 
 
+#encabezado { 
+	color:#202529;
+	margin-left: 10%;
+	font-size:18px;
+	
+}
 
+#descripcion { 
+	color:#4C604C;
+	margin-left: 10%;
+	font-size:16px;
+	
+}
 
 #mensaje ul {
 	list-style:none;
@@ -96,10 +108,23 @@ background-color: #f2f2f2;
 #header .btn:active {
     /* background-color:#0f6f91; */ 
 }
+.centrado{
+	text-align: center;
+	
+}
 
+.qr{
+	height: 80px; 
+	width:auto; 
+}
 
 .logo{
 	height:32px; 
+	width:auto; 
+	margin-top:6px;
+}
+.logo2{
+	height:28px; 
 	width:auto; 
 	margin-top:6px;
 }

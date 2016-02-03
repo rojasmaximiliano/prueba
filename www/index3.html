@@ -44,7 +44,16 @@
                     map: map, 
                     title: 'Mi punto en el mapa' 
                 }); 
-                
+                /*
+				var puntos = [];
+				var latLong= new google.maps.LatLng(-33.4568905,-70.6709017);
+				var punto = new google.maps.Marker({position:latLong})
+				puntos.push(punto);
+				var latLong= new google.maps.LatLng(-33.4571314,-70.6714447);
+				var punto = new google.maps.Marker({position:latLong})
+				puntos.push(punto);
+				var cluster = new MarkerClusterer(map, puntos);
+				*/
 				var parentElement = document.getElementById("cargando");
 				parentElement.setAttribute('style', 'display:none;');
             } 

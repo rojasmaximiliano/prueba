@@ -1,1 +1,40 @@
-<div class="borde-h1 color2"></div><h1>Codigo QR</h1>
+		<div class="pure-g">
+			<div class="pure-u-3-24"></div>
+			
+			
+			
+			<div class="pure-u-18-24 centrado">
+				<h1>¡A Reciclar!</h1>
+			
+				<div id="encabezado"> Si ya estás en el punto limpio,	busca el código QR de Yo Reciclo. Los códigos QR lucen de la siguiente manera: 
+				</div>
+				<br>
+				
+				<img class="qr centrado" src="img/ejemploQR2.png" /> 
+			
+			<br>
+			<br>
+			
+				<form id="registro" class="pure-form pure-form-aligned" method="post" onsubmit="escanear()">
+
+					
+					<div class="pure-u-1 centrado">
+						<label for="tipo" id="descripcion">Ingresa información extra</label>
+						<textarea id="tipo" rows="5" cols="100" class="pure-u-23-24" maxlength="256" placeholder="Tipo de productos, cantidad, volumen o peso aproximado." ></textarea>	
+					</div>
+		
+					
+		
+					<br>
+					
+					<!--- Borre "pure controls"-->
+				<fieldset>
+					<button type="submit" class="pure-button pure-button-primary pure-u-1">ESCANEAR CÓDIGO</button>
+				</fieldset>
+				</form>	
+		<br>
+		<br>
+		
+			</div>
+			<div class="pure-u-3-24"></div>
+		</div>
