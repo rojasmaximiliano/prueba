@@ -271,13 +271,12 @@ function scanear(){
 				success: function(data) {
 					if (data!=null){
 						alert(data);
-						javascript:menu('1');
+						
 					}
 					
 					else{
 						alert('No hay información para mostrar');
-						estado="menuprincipal";
-						menu('1');
+						
 						}
 				},
 							
