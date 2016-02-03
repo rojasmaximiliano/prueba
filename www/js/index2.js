@@ -244,15 +244,34 @@ function getMensajes(){
         });
 
 }
+/*
+function scanear(){ 
+	alert("vamos a intentar");
+	cordova.plugins.barcodeScanner.scan( 
+		function (result) {  
+			console.log(result.text);
+			alert(result.text); 
+		}, 
+		function (error) { 
+			alert("nope");
+			notificacion("Ha ocurrido un error al escanear."); 
+		} 
+	); 
+}; */
 
 function scanear(){ 
 	alert("Debes colocar tu teléfono de forma horizontal para escanear");
 	var envio = new Object();
-	envio.tipo =  $("#tipo").val()
+	envio.tipo =  $("#tipo").val();
 	envio.key = key;
 	envio.idPuntoLimpioString = '1';
 	cordova.plugins.barcodeScanner.scan( 
-		function (envio) {  
+		
+		function (result) {  
+			var envio = new Object();
+			envio.tipo =  $("#tipo").val()
+			envio.key = key;
+			envio.idPuntoLimpioString = '1';
 			key= "vokeyJVVDocGaFDG6l1VJ_Psr085yaRoMS4FwQ2PmZjrOYYSg0UAx4rC"
 			url= "http://10.42.207.205:8080/yoreciclo/"
 			data =  envio
@@ -264,7 +283,8 @@ function scanear(){
 				data: data,
 				crossDomain: true,
 				timeout:60000,
-				complete: function(xhr, statusText){ 
+				complete: function(xhr, statusText){
+					alert("hola");
 					console.log(xhr.responseText);
 				},
 							
@@ -286,7 +306,7 @@ function scanear(){
 				});
 		}, 
 		function (error) { 
-			notificacion("Ha ocurrido un error al escanear. Por favor intentalo de nuevo."); 
+			alert("Ha ocurrido un error al escanear. Por favor intentalo de nuevo."); 
 		} 
 	); 
 }; 
