@@ -34,23 +34,21 @@
 
         <title>Registro</title>
     </head>
-    <body id="loginn">
-	<div class="wrapper">
-	<div id="scroller">
-		<div class="pure-g">
+    <body>
+	<div id="wrapper">
+	<div class="scroller">
+		<div class="pure-g loginn">
 			<div class="pure-u-3-24"></div>
 			
 			
 			<div class="pure-u-18-24 centrado">
 				<img class="fotoreg centrado" src="img/logo7.png" />
-				<form id="registro" class="pure-form pure-form-aligned colorclaro" method="post"  >
+				<form id="registro" class="pure-form pure-form-aligned colorclaro" method="post">
 					<br>
 			
 						<input id="nombre" type="text" class="pure-u-1  formlogin" placeholder="Nombre de usuario" required>
 
-					<br>
-
-						<input id="correo" type="email" class="pure-u-1 formlogin" placeholder="Correo electrónico" required>								
+					
 					<br>
 					
 						<input id="pass" type="password" class="pure-u-1 formlogin" placeholder="Contraseña" required>
@@ -59,24 +57,23 @@
 				
 						<input id="pass2" type="password" class="pure-u-1 formlogin" placeholder="Repetir Contraseña" required>
 					
+					<br>
 
+						<input id="correo" type="email" class="pure-u-1 formlogin" placeholder="Correo electrónico" required>			
 					
-					<div class="pure-u-1">					
-					<label for="fechaNac" class="formlogin" id="descripcion" >Fecha de nacimiento: </label> 
-					</div>
-					<div class="pure-u-1">
-					<input class="centrado formlogin izquierda" id = "fechaNac" type="date" name="fechaNac" required>
-					</div>
-					
-					
-					<div class="pure-u-1 formlogin ">
-						<label for="fechaNac" class="formlogin" id="descripcion" >Genero </label> 
+					<br>
+					<div class="pure-u-1 formlogin colorclaro">
 						<input type="radio" id = "genero" name="genero" value="Mujer" required> Mujer
 						<input type="radio" id = "genero2" name="genero" value="Hombre" required> Hombre
 					</div>	
 
 					<br>
-
+					<div class="pure-u-1">					
+					<label for="fechaNac" class="formlogin colorclaro">Fecha de nacimiento: </label> 
+					</div>
+					<div class="pure-u-1">
+					<input class="centrado formlogin" id = "fechaNac" type="date" name="fechaNac" required>
+					</div>
 					
 					<br>
 					<textarea rows="5" class="pure-u-23-24" readonly>Términos y Condiciones Yo Reciclo
@@ -93,11 +90,12 @@ Al registrarte en Yo Reciclo, aceptas participar de un estudio realizado por la 
 					<button type="submit" class="pure-button pure-button-primary pure-u-1 colorprincipal">REGISTRAR</button>
 				</fieldset>
 				</form>	
+		<br>
+		<br>
 							<div class="pure-u-1 enlace colorclaro centrado" >
 						<a href="login.html"><u>  Volver al login </u> </a>
 					</div>
-					<br><br>
-		<br>		
+					
 			</div>
 			<div class="pure-u-3-24"></div>
 		</div>
@@ -105,25 +103,40 @@ Al registrarte en Yo Reciclo, aceptas participar de un estudio realizado por la 
 				
 		</div>
 		</div>
-
-		<script type="text/javascript" src="phonegap.js"></script> 
-	    <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/fastclick.js"></script>
+		
 		<script type="text/javascript" src="js/index2.js"></script>
 		
+		
         <script type="text/javascript">
+           app.initialize();
+		   document.addEventListener('deviceready', onDeviceReady, false); 
+	/*	var myScroll; 
+
+		function loaded() { 
+
+		myScroll = new iScroll('wrapper', { 
+		snap: true, 
+		momentum: false, 
+		hScrollbar: false, 
+		onScrollEnd: function () { 
+		} 
+		}); 
+		}
+		document.addEventListener('DOMContentLoaded', loaded, false);
+		*/
             $('#registro').submit(function() {
                 // recolecta los valores que inserto el usuario
 				alert('vamoavel');
 				var prueba = new Object();
-				prueba.usuario =  $("#nombre").val();
-				prueba.pass = $("#pass").val();
-				prueba.correo = $("#correo").val();
-				prueba.fechaNac = $("#fechaNac").val();
-
+				prueba.usuario =  $("#nombre").val()
+				prueba.pass = $("#pass").val()
+				prueba.correo = $("#correo").val()
+				prueba.fechaNac = $("#fechaNac").val()
+				prueba.nHabitantes = $("#nHabitantes").val()
+				prueba.nReciclajes = $("#nReciclajes").val()
 				prueba.genero = $('input:radio[name=genero]:checked').val();
                 
-                url = "http://10.42.207.205:8080/yoreciclo/usuario/registrar/"
+                url = "http://localhost:8080/yoreciclo/usuario/prueba/"
                 data =  prueba
              
                 $.ajax({
@@ -138,26 +151,23 @@ Al registrarte en Yo Reciclo, aceptas participar de un estudio realizado por la 
                     },
                     success: function(data) {
                     	if (data != null){
-
-							if (data.nombre == ""){
-								alert("Correo ya utilizado, por favor ocupa otro");
+							$("#result").html(""); 
+							alert('Resultó');
+							for(var i in data){ 
+								$("#result").append("<li>"+data[i]+"</li>"); 
 							}
-							else{
-								localStorage.setItem("key", data.key);
-								var key = localStorage.getItem("key") || "0";
-								alert(key);
-								document.location="prueba_index.html";
-							}
+						}
+						else{
+							alert('nooooo');
 						}
                     },
                     error: function( req, status, err ) {
                         alert('Error establecer conexión');
-						
                     }
                 });
                 return false;
             });
-       
+            
         </script>
     </body>
 </html>

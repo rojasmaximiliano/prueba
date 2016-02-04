@@ -11,6 +11,12 @@ var xhReq = new XMLHttpRequest();
 var app = {
     // Constructor de la app
     initialize: function() {
+		var key = localStorage.getItem("key") || "0";
+		if (key == "0"){
+			//No ha iniciado sesión
+			document.location = "login.html";
+		}
+		else{
     	// Estado inicial mostrando capa cuerpo
     	estado="cuerpo";
     	
@@ -36,8 +42,10 @@ var app = {
 		xhReq.open("GET", "opciones/menu.html", false);
 		xhReq.send(null);
 		document.getElementById("contenidoMenu").innerHTML=xhReq.responseText;
+		
 			
         this.bindEvents();
+	}
     },
 
     bindEvents: function() {
@@ -128,6 +136,7 @@ function onError(error) {
 
 
 function initializeMap(lat,long) { 
+	var key = localStorage.getItem("key")
 	myLatlng = new google.maps.LatLng(lat, long); 
 	myLatlng2 = new google.maps.LatLng(-33.4587173,-70.6623188);
     var mapOptions = { 
@@ -138,10 +147,13 @@ function initializeMap(lat,long) {
 	
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 
-	var key = "etkSJjrEJHyMcU5HL3YYyu0xru87e_fjsrbHYSi3z-nsgVzFu82K-fj6";
-                
-    //url = "http://localhost:8080/yoreciclo/puntos/obtener/"+key
-	url= "http://10.42.207.205:8080/yoreciclo/puntos/obtener/etkSJjrEJHyMcU5HL3YYyu0xru87e_fjsrbHYSi3z-nsgVzFu82K-fj6"
+	var key = localStorage.getItem("key") || "0";
+		if (key == "0"){
+			//No ha iniciado sesión
+			document.location = "login.html";
+		}
+	var url = "http://10.42.207.205:8080/yoreciclo/puntos/obtener/"+key
+	url= url
     data =  key
      $.ajax({
         url: url,
@@ -193,10 +205,12 @@ function initializeMap(lat,long) {
 } 
 
 function getMensajes(){
-	var key = "etkSJjrEJHyMcU5HL3YYyu0xru87e_fjsrbHYSi3z-nsgVzFu82K-fj6";
-                
-    //url = "http://localhost:8080/yoreciclo/puntos/obtener/"+key
-	url= "http://10.42.207.205:8080/yoreciclo/mensaje/misMensajes/vokeyJVVDocGaFDG6l1VJ_Psr085yaRoMS4FwQ2PmZjrOYYSg0UAx4rC"
+	var key = localStorage.getItem("key") || "0";
+		if (key == "0"){
+			//No ha iniciado sesión
+			document.location = "login.html";
+		}
+	url= "http://10.42.207.205:8080/yoreciclo/mensaje/misMensajes/"+key
     data =  key
      $.ajax({
         url: url,
@@ -260,6 +274,11 @@ function scanear(){
 }; */
 
 function scanear(){ 
+	var key = localStorage.getItem("key") || "0";
+		if (key == "0"){
+			//No ha iniciado sesión
+			document.location = "login.html";
+		}
 	alert("Debes colocar tu teléfono de forma horizontal para escanear");
 	var envio = new Object();
 	envio.tipo =  $("#tipo").val();
@@ -268,12 +287,13 @@ function scanear(){
 	cordova.plugins.barcodeScanner.scan( 
 		
 		function (result) {  
+			alert(result)
+			var key = localStorage.getItem("key")
 			var envio = new Object();
 			envio.tipo =  $("#tipo").val()
 			envio.key = key;
 			envio.idPuntoLimpioString = '1';
-			key= "vokeyJVVDocGaFDG6l1VJ_Psr085yaRoMS4FwQ2PmZjrOYYSg0UAx4rC"
-			url= "http://10.42.207.205:8080/yoreciclo/"
+			url= "http://10.42.207.205:8080/yoreciclo/reciclaje/check"
 			data =  envio
 			alert(data);
 			 $.ajax({
@@ -310,4 +330,10 @@ function scanear(){
 		} 
 	); 
 }; 
+
 			
+function logout(){
+	localStorage.clear();
+	document.location = "login.html";
+}
+	

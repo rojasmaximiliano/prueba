@@ -19,7 +19,6 @@
     specific language governing permissions and limitations
     under the License.
 -->
-
 <html>
     <head>
         <meta charset="utf-8" />
@@ -29,38 +28,101 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <!--Pure CSS-->
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">		
-		<link rel="stylesheet" type="text/css" href="css/index1.css" />
-        <title>Prueba de registro</title>
-    </head>
-    <body>
-		<div class="pure-g">
-			<div class="pure-u-1-5"></div>
-			<div class="pure-u-3-5" id="login">
-				<form class="pure-form pure-form-aligned">
-					<br>
-					<div class="pure-u-1">
-						<label for="nombreusuario">Nombre de usuario</label>
-						<input id="nombreusuario" type="text" class="pure-u-23-24" placeholder="Nombre de usuario" required>
-					</div>
-					<br>
-					<div class="pure-u-1">
-						<label for="password">Contraseña</label>
-						<input id="password" type="password" class="pure-u-23-24" placeholder="Contraseña" required>
-					</div>		
+		<link rel="stylesheet" type="text/css" href="css/index2.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-				    <div class="pure-u-1">
-					<button type="submit" class="pure-button pure-button-primary pure-u-20-24">REGISTRAR</button>
+        <title>Login</title>
+    </head>
+    <body id="loginn">
+ 
+		<div class="pure-g">
+			<div class="pure-u-3-24"></div>
+			
+			
+			<div class="pure-u-18-24 centrado">
+			
+			<img class="fotologin" src="img/logo7.png" />
+			<br>
+			<img class="textologin" src="img/logo8.png" />
+			
+				<form  class="pure-form pure-form-aligned" method="post">
+					<br>
+					<div class="pure-u-1 formlogin">
+						<input id="correo" type="email" class="pure-u-23-24" placeholder="Correo electrónico" required>
+					</div>	
+
+					<br>
+					<div class="pure-u-1 formlogin">
+						<input id="pass" type="password" class="pure-u-23-24" placeholder="Contraseña" required>
 					</div>		
+					
+					
+					<div class="pure-u-1 coloroscuro" >
+						¿Aún no tienes cuenta? 
+						<br>
+						<a href="registro.html" class="coloroscuro"><u> Crear cuenta </u> </a>
+					</div>
+					
+					
+					<br>					
+					<!--- Borre "pure controls"-->
+				<fieldset>
+					<button type="submit" class="pure-button pure-button-primary pure-u-23-24 colorprincipal">ENTRAR</button>
 				</fieldset>
 				</form>	
-				</div>
-		<div class="pure-u-1-5"></div>
+		<br>
+		<br>
+		
+			</div>
+			<div class="pure-u-3-24"></div>
 		</div>
-
-		<script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+		
+				
+		
+		<script type="text/javascript" src="js/index2.js"></script>
         <script type="text/javascript">
             app.initialize();
+            $('#registro').submit(function() {
+                // recolecta los valores que inserto el usuario
+				alert('vamoavel');
+				var prueba = new Object();
+				prueba.correo =  $("#correo").val()
+				prueba.pass =  $("#pass").val()
+                
+                url = "http://10.42.207.205:8080/yoreciclo/getKey"
+                data =  prueba
+             
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type : "GET",
+                    data: data,
+                    crossDomain: true,
+					timeout:60000,
+                   complete: function(xhr, statusText){ 
+                        console.log(xhr.responseText);
+                    },
+                    success: function(data) {
+                    	if (data != null){
+
+							if (data.nombre == ""){
+								alert("Correo o contraseña incorrectos");
+							}
+							else{
+								localStorage.setItem("key", data.key);
+								var key = localStorage.getItem("key") || "0";
+								alert(key);
+								document.location="prueba_index.html";
+							}
+						}
+                    },
+                    error: function( req, status, err ) {
+                        alert('Error establecer conexión');
+                    }
+                });
+                return false;
+            });
+            
         </script>
     </body>
 </html>
