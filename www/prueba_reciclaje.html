@@ -97,18 +97,18 @@
                         console.log(xhr.responseText);
                     },
                     success: function(data) {
-                    	if (data != null){
-							$("#result").html(""); 
-							alert(data);
-							for(var i in data){ 
-								$("#result").append("<li>"+data[i]+"</li>"); 
+						alert(data.textoMensaje);
+											
+                    	if (data.textoMensaje != "Usuario no reconocido"){
+							if (data.textoMensaje != "Error: No se leyó bien el código QR"){ 
+							document.location = "prueba_index.html"
 							}
+							
 						}
-						else{
-							alert('nooooo');
-						}
+						
                     },
                     error: function( req, status, err ) {
+
                         alert('Error establecer conexión');
                     }
                 });
